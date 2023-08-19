@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./login.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+
+<body>
+
+
+
+
+
+    <div class="login-reg-panel">
+        <div class="login-info-box">
+            <h2>Bạn đã có tài khoản?</h2>
+            <p>Hãy chọn đăng nhập</p>
+            <label id="label-register" for="log-reg-show">Đăng nhập</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+        </div>
+
+
+
+
+
+
+        <div class="register-info-box">
+            <h2>Bạn chưa có tài khoản?</h2>
+            <p>Hãy chọn đăng ký</p>
+            <label id="label-login" for="log-login-show">Đăng ký</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+
+
+
+
+
+
+        <div class="white-panel">
+            <div  class="login-show">
+                <h2>ĐĂNG NHẬP</h2>
+                <input type="text" placeholder="Username" id="userInp_log">
+                <input type="password" placeholder="Password" id="passInp_log">
+                <!-- <input type="button" value="SUBMIT" id="sub_btn_log"> -->
+                <button id="sub_btn_log">Submit</button>
+
+                <a href="">Quay lại trang chủ</a>
+
+
+
+            </div>
+            <div class="register-show">
+                <h2>ĐĂNG KÝ</h2>
+                <input type="text" placeholder="Fullname" id="nameInp">
+                <input type="text" placeholder="Email" id="emailInp">
+                <input type="text" placeholder="Username" id="userInp">
+                <input type="password" placeholder="Password" id="passInp">
+                <button id="sub_btn">Submit</button>
+
+                <a href="">Quay lại trang chủ</a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyB4PSqQ5E4NUk9EncXCBgHFU2JkbOmSRAQ",
+        authDomain: "firestore-3e318.firebaseapp.com",
+        projectId: "firestore-3e318",
+        storageBucket: "firestore-3e318.appspot.com",
+        messagingSenderId: "815557755566",
+        appId: "1:815557755566:web:f224e93e8da519e5fc633f"
+    };
+
+
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    import { getDatabase, ref, set, child, get }
+        from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+
+    const db = getDatabase();
+
+
+
+    const username= document.getElementById("userInp_log")
+    const password = document.getElementById("passInp_log")
+
+    const submit = document.getElementById("sub_btn_log")
+
+    function authenuser() {
+
+        const dbRef = ref(db);
+
+        get(child(dbRef, "User/" + user.value)).then((result) => {
+console.log("okkkkkkk");
+            if (result.exists()) {
+                let dbpass = decPass(result.val().passDB);
+                console.log(dbpass + "iiiiiiiii" + pass.value);
+
+                if (dbpass == pass.value) {
+                    login(result.val());
+                    console.log(dbpass + "iiiiiciiii" + pass.value);
+                } else {
+                    alert("password incorrect");
+                }
+            } else {
+                alert("username incorrect");
+            }
+
+        })
+
+    }
+
+
+
+    // giai ma 
+    function decPass(firePass) {
+        var encryptionPass = CryptoJS.AES.decrypt(firePass, pass.value);
+        return encryptionPass.toString(CryptoJS.enc.Utf8);
+    }
+    function login(user) {
+        window.location = "/SPCK/Main/main.html"
+    }
+    
+
+
+
+
+
+    
+// khai bao bien
+const name = document.getElementById("nameInp")
+const email = document.getElementById("emailInp")
+const user = document.getElementById("userInp")
+const pass = document.getElementById("passInp")
+
+const signup = document.getElementById("sub_btn")
+
+// kiem tra tinh hop le cua du lieu
+function validationForm() {
+    let nameRegex = /^[a-zA-Z]+$/;
+    let emailRegex = /^[a-zA-Z0-9]+@(gmail|yahoo)\.com$/;
+    let userRegex = /^[a-xA-Z0-9]{6,}$/;
+
+
+    // check
+    if (!nameRegex.test(name.value)) {
+        alert("the full name should contain alphabets");
+        return false;
+    }
+
+    if (!emailRegex.test(email.value)) {
+        alert("the email a valid email");
+        return false;
+    }
+    if (!userRegex.test(user.value)) {
+        alert("username should alphabets, number, 6 characters");
+        return false;
+    }
+    return true;
+}
+
+function registerForm() {
+    if (!validationForm()) {
+        return;
+    }
+
+
+
+    const dbRef = ref(db);
+    get(child(dbRef, "User/" + user.value))
+        .then((result) => {
+
+            if (result.exists()) {
+                alert("account already exists");
+            } else {
+                set(ref(db, "User/" + user.value), {
+                    fullnameDB: name.value,
+                    emailDB: email.value,
+                    usernameDB: user.value,
+                    passDB: encPass()
+                })
+            }
+        }).then(() => {
+            alert("account add success");
+        }).catch((error) => {
+            alert("error" + error);
+        })
+}
+function encPass(){
+    var encryptionPass = CryptoJS.AES.encrypt(pass.value, pass.value);
+    return encryptionPass.toString();
+}
+submit.addEventListener("click", authenuser);
+signup.addEventListener("click", registerForm)
+
+</script>
+
+</body>
+<script src="./style.js"></script>
+
+
+</html>

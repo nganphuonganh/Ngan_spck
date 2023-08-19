@@ -1,0 +1,189 @@
+
+
+
+
+/* BODY */
+.page{
+display: flex;
+flex-direction: row;
+margin-top:30px ;
+background-color: #ffffff;
+}
+.page-left img{
+width: 550px;
+margin-top: 10px ;
+margin-left: 10px;
+}
+.page-left-review{
+background-color: rgb(224, 224, 235);
+margin-left: 10px;
+}
+.page-left-review h1{
+font-family: 'Bruno Ace', cursive;
+margin: 0%;
+color: rgb(4, 32, 203);
+}
+.page-left-review h3{
+margin: 0%;
+font-family: 'Dosis', sans-serif;
+font-size: 25px;
+color: rgb(0, 0, 0);
+}
+.page-left-review a{
+text-decoration: none;
+margin-top: 20px;
+}
+.page-left-review span{
+margin: 0%;
+padding: 0%;
+}
+.page-right{
+margin-left: 20px;
+margin-top: 10px ;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+}
+.page-right h1{
+margin: 0%;
+padding: 0%;
+color:rgb(4, 32, 203) ;
+}
+.page-right h2{
+margin: 0%;
+padding: 0%;
+color:rgb(4, 32, 203) ;
+}
+.page-right h3{
+margin-top: 10px;
+padding: 0%;
+font-size: 15px;
+font-weight: 1px;
+color:rgb(4, 32, 203) ;
+}
+.button-right{
+background-color: transparent;
+border: none;
+display: flex;
+flex-direction: row;
+}
+
+.button-right button{
+background-color: transparent;
+border: none;
+margin: 0%;
+display: flex;
+flex-direction: row;
+}
+
+.button-right a {
+font-size: 40px;
+margin: 0%;
+text-decoration: none;
+}
+
+.button-right p {
+font-size: 13px;
+text-transform: uppercase;
+font-family:'Signika Negative', sans-serif ;
+width: 180px;
+padding: 5%;
+background-color:  rgb(4, 32, 203);
+color:rgb(255, 255, 255) ;
+border-radius: 2px;
+}
+.button-right p:hover{
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+
+.text-top h1{
+font-family: 'Righteous', cursive;
+letter-spacing: 2px;
+
+}
+.text-top h2{
+font-family: 'Dosis', sans-serif;
+}
+.text-top h3{
+font-family: 'Righteous', cursive;
+font-size: 30px;
+margin: 0%;
+}
+.text-bottom h1{
+font-family: 'Bruno Ace', cursive;
+font-weight: 50%;
+padding-left: 220px;
+padding-top: 10px;
+border-bottom: 2px;
+border-bottom-style:double ;
+margin-right: 10px;
+}
+.text-bottom-container{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+font-family: 'Dosis', sans-serif;
+margin-right: 10px;
+}
+
+
+
+
+
+/* FOOTER  */
+.text-center {
+background-color: #ffffff;
+padding: 20px;
+margin-top: 30px;
+}
+
+.d-flex {
+display: flex;
+flex-direction: row;
+justify-content: center;
+border-bottom: 2px;
+border-bottom-style: groove;
+}
+
+.me-5 {
+font-size: 20px;
+padding-right: 20px;
+margin-bottom: 30px;
+color: rgb(4, 32, 203);
+font-weight: 50px;
+}
+
+.me-4 {
+display: inline-block;
+color: rgb(4, 32, 203);
+padding-top: 5px;
+padding-left: 10px;
+padding-right: 10px;
+text-decoration: none;
+}
+
+.container {
+padding: 0%;
+}
+
+
+.row1 {
+display: flex;
+justify-content: space-around;
+}
+
+.text-uppercase {
+color: rgb(4, 32, 203);
+font-size: 20px;
+margin: 0%;
+}
+
+.text-reset {
+text-decoration: none;
+color: rgb(0, 0, 0);
+font-weight: 500px;
+}
+
+
